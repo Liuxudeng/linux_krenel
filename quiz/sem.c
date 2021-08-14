@@ -1,16 +1,16 @@
 #include"sem.h"
 
-//ĞÅºÅÁ¿
+//ä¿¡å·é‡
 static int semid = -1;
 
 void sem_init(int a[], int n)
 {
     semid = semget((key_t)1000, n, IPC_CREAT | IPC_EXCL | 0666);
 
-    if (semid == -1)//ÅĞ¶ÏÊÇ²»ÊÇµÚÒ»¸ö£¬µÚÒ»¸öÒª´´½¨²¢¸³³õÊ¼Öµ
+    if (semid == -1)//åˆ¤æ–­æ˜¯ä¸æ˜¯ç¬¬ä¸€ä¸ªï¼Œç¬¬ä¸€ä¸ªè¦åˆ›å»ºå¹¶èµ‹åˆå§‹å€¼
     {
         semid = semget((key_t)1000, n, 0666);
-        if (semid == -1)//µÚ¶ş¸öÖ»»ñÈ¡
+        if (semid == -1)//ç¬¬äºŒä¸ªåªè·å–
         {
             perror("semget error\n");
         }
