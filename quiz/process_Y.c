@@ -7,14 +7,14 @@
 
 int main()
 {
-    int shmid = shmget((key_t)1000, 512, IPC_CREAT | 0666);//»ñÈ¡¹²ÏíÄÚ´æ¿Õ¼ä
+    int shmid = shmget((key_t)1000, 512, IPC_CREAT | 0666);//èŽ·å–å…±äº«å†…å­˜ç©ºé—´
     if(shmid == -1) return -1;
 
     char* p = (char*)shmat(shmid, NULL, 0);
     if(p == (char*)-1) return -1;
 
     int a[2] = { 1,0 };
-    sem_init(a, 2);//³õÊ¼»¯»ò»ñÈ¡ÐÅºÅÁ¿id
+    sem_init(a, 2);//åˆå§‹åŒ–æˆ–èŽ·å–ä¿¡å·é‡id
 
     while (1)
     {   
@@ -30,11 +30,11 @@ int main()
         {
             if (m[i] > 96 && m[i] < 123)
             {
-                m[i] = m[i] - 32;            //½«Ð¡Ð´±äÎª´óÐ´
+                m[i] = m[i] - 32;            //å°†å°å†™å˜ä¸ºå¤§å†™
                 continue;
             }
         }
-        printf("½ÓÊÕµ½µÄÊý¾ÝÎª£º");
+        printf("æŽ¥æ”¶åˆ°çš„æ•°æ®ä¸ºï¼š");
         for (i = 0; i < strlen(m); i++)
             printf("%c",m[i]);
         printf("\n");
